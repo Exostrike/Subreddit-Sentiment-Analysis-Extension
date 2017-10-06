@@ -1,0 +1,32 @@
+{
+  "manifest_version": 2,
+ 
+  "name": "Reddit sentiment tool",
+  "description": "This extension is a client side sentiment analysis tool for reddit subreddits",
+  "version": "1.0",
+ 
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "index.html",
+    "default_title": "Reddit sentiment"
+  },
+  
+   "background": {
+      "scripts": [ "function.js"],
+      "persistent": false
+   }, 
+  "content_scripts": [
+    {
+      "matches": ["http://www.reddit.com/*"],  
+      "js": ["function.js",
+            "require.js",
+            "snoowrap.js"],
+      "css": ["popup.css"]       
+    }
+    ], 
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "http://www.reddit.com/*"
+    ]
+}
